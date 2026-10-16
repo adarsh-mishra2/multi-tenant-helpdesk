@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Helpdesk</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script src="/assets/app.js" defer></script>
+</head>
+<body>
+<header class="topbar" id="topbar" hidden>
+    <div class="topbar-inner">
+        <a class="brand" href="#/tickets">
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-6l-4.5 4v-4H6a2 2 0 0 1-2-2z"/></svg>
+            <span id="org-name">Helpdesk</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+            <a href="#/tickets" data-nav="tickets">Tickets</a>
+            <a href="#/team" data-nav="team" id="nav-team" hidden>Team</a>
+        </nav>
+        <div class="whoami">
+            <span id="user-name"></span>
+            <span class="role" id="user-role"></span>
+            <button class="link" id="logout" type="button">Log out</button>
+        </div>
+    </div>
+</header>
+
+<main id="app" class="app" tabindex="-1"></main>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

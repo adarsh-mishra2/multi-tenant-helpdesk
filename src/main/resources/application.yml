@@ -1,0 +1,65 @@
+spring:
+  application:
+    name: helpdesk
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/helpdesk}
+    username: ${DB_USERNAME:helpdesk}
+    password: ${DB_PASSWORD:helpdesk}
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:10}
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+
+  sql:
+    init:
+      mode: ${DB_INIT_MODE:always}
+
+  data:
+    web:
+      pageable:
+        max-page-size: 100
+
+server:
+  port: ${SERVER_PORT:8080}
+  shutdown: graceful
+  error:
+    include-stacktrace: never
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    persist-authorization: true
+    tags-sorter: alpha
+
+app:
+  security:
+    jwt:
+      secret: ${JWT_SECRET:7tZ6Vbv0LDUWWc8wBX6iPiPIWgG9ncbPjz/uD5Jw4Y1bGKIkMxe3Q4vZhEmGZ0ZLqDMlEn+dtyxuZR2V/je3JQ==}
+      expiration: ${JWT_EXPIRATION:PT8H}
+      issuer: helpdesk-api
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:4200,http://localhost:3000}
+
+logging:
+  level:
+    com.assignment.helpdesk: INFO
